@@ -1,0 +1,17 @@
+{% extends "appsecure/base.html" %}
+
+{% block content %}
+<br>
+<div class="container bg-white shadow-md p-5 form-layout text-center">
+    <i class="fa fa-lock fa-3x" aria-hidden="true"></i>
+    <br><br>
+    <h3>Account locked</h3>
+    <br>
+    <p>You have been locked out of your account due to multiple failed login attempts</p>
+    <p>You may reattempt to login to your account after the expiry period</p>
+
+    <br>
+    <a class="btn btn-info" type="button"  href="{% url 'home' %}">Return to homepage</a>
+</div>
+<br>
+{% endblock%}
