@@ -15,7 +15,7 @@ def register(request):
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
             return redirect("two_factor:login")
     context = {"registerForm": form}

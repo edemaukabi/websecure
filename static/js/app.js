@@ -1,5 +1,7 @@
 const message_timeout = document.getElementById("message-timer")
 
-setTimeout(() => {
-    message_timeout.style.display = "none"
-}, 5000)
+if (message_timeout) {
+    setTimeout(() => {
+        message_timeout.style.display = "none"
+    }, 5000)
+}
