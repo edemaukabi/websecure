@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: websecure
+      POSTGRES_USER: websecure
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  web:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://websecure:${DB_PASSWORD}@db:5432/websecure
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
