@@ -1,60 +1,47 @@
-
 {% load crispy_forms_tags %}
-
 {% load static %}
 
 <!DOCTYPE html>
-
 <html lang="en">
 
     <head>
-
-        <title> WebSecure | Login </title>
+        <title>WebSecure | Login</title>
         <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
         <meta charset="utf-8" />
-
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap.min.css' %}">
-
-        
+        <style>
+            body { background-color: #f0f0f0; }
+            .form-layout { max-width: 500px; width: 100%; border-radius: 20px; }
+        </style>
     </head>
 
-    <style type="text/css">
+    <body>
 
-        body{
-            background-color: #f0f0f0;
-        }
+        {% for message in messages %}
+            <p class="alert alert-info text-center {{ message.tags }}">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{{ message }}
+            </p>
+        {% endfor %}
 
-    </style>
+        <br>
 
-    <!-- Messages -->
-    {% for message in messages %}
-      <p class="alert alert-info float-center text-center {{message.tags}}">
-        <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;
-         {{message}} 
-      </p>
-    {% endfor %}
-
-  <br>
-
-  <body>
- 
-    {% block content_wrapper %}
-      
-      <div class="container">
-      
-          {% block content %} {% endblock %}
-
+        <div class="container">
+            <a href="/" class="btn btn-secondary btn-sm mb-3">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+            </a>
         </div>
 
-      {% endblock %}
+        {% block content_wrapper %}
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
 
-    
+        <script src="{% static 'vendor/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/app.js' %}"></script>
 
-  </body>
-
-
-  <script src="{% static 'js/app.js' %}"></script>
+    </body>
 
 </html>
